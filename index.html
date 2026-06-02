@@ -88,10 +88,7 @@
   .pa{display:flex;gap:8px;margin-top:5px;}
   .pa span{font-size:11px;font-weight:700;color:var(--orange-dark);}
   .pa span.lab{color:var(--sub);font-weight:600;}
-  .cc-status{font-size:10px;font-weight:600;color:var(--sub);white-space:nowrap;flex:none;}
-  .cc-status.done{color:var(--orange-dark);}
-  .cc-right{display:flex;flex-direction:column;align-items:flex-end;gap:4px;flex:none;}
-  .cc-try{font-size:11px;font-weight:700;color:var(--green);white-space:nowrap;}
+  .cc-try{font-size:11px;font-weight:700;color:var(--green);margin-top:5px;}
 
   /* ───── Main column ───── */
   .main{flex:1;display:flex;flex-direction:column;min-width:0;}
@@ -321,7 +318,6 @@
     .etapas{max-height:none;padding:8px;}
     .etapa-h{padding:11px;}
     .conteudo{align-items:flex-start;padding:10px;}
-    .cc-status,.cc-try{font-size:9.5px;}
     .topbar{height:52px;gap:10px;padding:0 10px;}
     .backbtn{width:34px;height:34px;}
     .crumbs{font-size:12px;}
@@ -348,8 +344,6 @@
     .conteudo{display:grid;grid-template-columns:28px minmax(0,1fr);gap:8px 9px;}
     .conteudo .ctico{grid-column:1;grid-row:1;}
     .conteudo .cc-mid{grid-column:2;grid-row:1;min-width:0;}
-    .cc-status,.cc-right{grid-column:2;grid-row:2;align-items:flex-start;margin-top:-2px;white-space:normal;}
-    .cc-try{white-space:normal;}
     .pa{flex-wrap:wrap;gap:4px 8px;}
     .trail-summary{grid-template-columns:56px minmax(0,1fr);gap:10px 12px;}
     .trail-progress{width:56px;height:56px;}
@@ -412,9 +406,6 @@
               <div class="cc-name">Conteúdo 1 — Manual Minha área.pdf</div>
               <div class="cc-type">Documento</div>
               <div class="pa"><span><span class="lab">P</span> 100%</span><span><span class="lab">A</span> 100%</span></div>
-            </div>
-            <div class="cc-right">
-              <div class="cc-status done">Concluído</div>
               <div class="cc-try">Tentativa 1/2</div>
             </div>
           </div>
@@ -438,34 +429,24 @@
               <div class="cc-name">Conteúdo 2 — Linguagens de Programação</div>
               <div class="cc-type">Vídeo</div>
               <div class="pa"><span><span class="lab">P</span> 100%</span><span><span class="lab">A</span> 100%</span></div>
-            </div>
-            <div class="cc-right">
-              <div class="cc-status done">Concluído</div>
-              <div class="cc-try">Tentativa 2/2</div>
+              <div class="cc-try">Tentativa 2/3</div>
             </div>
           </div>
           <div class="conteudo">
             <div class="ctico" style="background:var(--teal-light)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14,2H6a2,2,0,0,0-2,2v16a2,2,0,0,0,2,2h12a2,2,0,0,0,2-2V8Z"/><polyline points="14,2 14,8 20,8"/></svg></div>
             <div class="cc-mid"><div class="cc-name">qrcode lista de presença — Presencial.png</div><div class="cc-type">Documento</div></div>
-            <div class="cc-status">Não visualizado</div>
           </div>
           <div class="conteudo">
             <div class="ctico" style="background:var(--teal-light)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14,2H6a2,2,0,0,0-2,2v16a2,2,0,0,0,2,2h12a2,2,0,0,0,2-2V8Z"/><polyline points="14,2 14,8 20,8"/></svg></div>
             <div class="cc-mid"><div class="cc-name">Manual Lector 2026/02 — Social.pdf</div><div class="cc-type">Documento</div></div>
-            <div class="cc-status">Não visualizado</div>
           </div>
           <div class="conteudo">
             <div class="ctico" style="background:var(--teal-light)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14,2H6a2,2,0,0,0-2,2v16a2,2,0,0,0,2,2h12a2,2,0,0,0,2-2V8Z"/><polyline points="14,2 14,8 20,8"/></svg></div>
             <div class="cc-mid"><div class="cc-name">Menu validação de termos — Trilhas.pdf</div><div class="cc-type">Documento</div></div>
-            <div class="cc-status">Não visualizado</div>
           </div>
           <div class="conteudo">
             <div class="ctico" style="background:var(--warn-light)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--warn)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9,11 12,14 22,4"/><path d="M21,12v7a2,2,0,0,1-2,2H5a2,2,0,0,1-2-2V5a2,2,0,0,1,2-2h11"/></svg></div>
-            <div class="cc-mid"><div class="cc-name">Avaliação_Excel (5).xlsx</div><div class="cc-type">Avaliação</div></div>
-            <div class="cc-right">
-              <div class="cc-status">Em andamento</div>
-              <div class="cc-try">Tentativa 1/2</div>
-            </div>
+            <div class="cc-mid"><div class="cc-name">Avaliação_Excel (5).xlsx</div><div class="cc-type">Avaliação</div><div class="cc-try">Tentativa 1/2</div></div>
           </div>
         </div>
       </div>
@@ -483,22 +464,18 @@
           <div class="conteudo">
             <div class="ctico" style="background:var(--warn-light)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--warn)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9,11 12,14 22,4"/><path d="M21,12v7a2,2,0,0,1-2,2H5a2,2,0,0,1-2-2V5a2,2,0,0,1,2-2h11"/></svg></div>
             <div class="cc-mid"><div class="cc-name">todas na mesma página Thiago</div><div class="cc-type">Avaliação</div></div>
-            <div class="cc-status">Não visualizado</div>
           </div>
           <div class="conteudo">
             <div class="ctico" style="background:var(--warn-light)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--warn)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9,11 12,14 22,4"/><path d="M21,12v7a2,2,0,0,1-2,2H5a2,2,0,0,1-2-2V5a2,2,0,0,1,2-2h11"/></svg></div>
             <div class="cc-mid"><div class="cc-name">uma por página Thiago</div><div class="cc-type">Avaliação</div></div>
-            <div class="cc-status">Não visualizado</div>
           </div>
           <div class="conteudo">
             <div class="ctico" style="background:var(--warn-light)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--warn)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9,11 12,14 22,4"/><path d="M21,12v7a2,2,0,0,1-2,2H5a2,2,0,0,1-2-2V5a2,2,0,0,1,2-2h11"/></svg></div>
             <div class="cc-mid"><div class="cc-name">Reação uma por página Thiago</div><div class="cc-type">Avaliação</div></div>
-            <div class="cc-status">Não visualizado</div>
           </div>
           <div class="conteudo">
             <div class="ctico" style="background:var(--warn-light)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--warn)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9,11 12,14 22,4"/><path d="M21,12v7a2,2,0,0,1-2,2H5a2,2,0,0,1-2-2V5a2,2,0,0,1,2-2h11"/></svg></div>
             <div class="cc-mid"><div class="cc-name">Reação todas em uma página Thiago</div><div class="cc-type">Avaliação</div></div>
-            <div class="cc-status">Não visualizado</div>
           </div>
         </div>
       </div>
@@ -515,12 +492,10 @@
           <div class="conteudo">
             <div class="ctico" style="background:var(--teal-light)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14,2H6a2,2,0,0,0-2,2v16a2,2,0,0,0,2,2h12a2,2,0,0,0,2-2V8Z"/><polyline points="14,2 14,8 20,8"/></svg></div>
             <div class="cc-mid"><div class="cc-name">Checklist - HML - Mika (4).xlsx</div><div class="cc-type">Documento</div></div>
-            <div class="cc-status">Não visualizado</div>
           </div>
           <div class="conteudo">
             <div class="ctico" style="background:var(--teal-light)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14,2H6a2,2,0,0,0-2,2v16a2,2,0,0,0,2,2h12a2,2,0,0,0,2-2V8Z"/><polyline points="14,2 14,8 20,8"/></svg></div>
             <div class="cc-mid"><div class="cc-name">Apresentação faculdade socialização 14.07 2 (7).pptx</div><div class="cc-type">Documento</div></div>
-            <div class="cc-status">Não visualizado</div>
           </div>
         </div>
       </div>
