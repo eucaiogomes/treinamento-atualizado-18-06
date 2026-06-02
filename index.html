@@ -56,6 +56,7 @@
   .side-finish{width:100%;height:46px;margin-top:18px;border:1px solid rgba(255,255,255,.35);border-radius:10px;background:rgba(255,255,255,.18);color:#fff;font-family:var(--sans);font-size:12px;font-weight:800;letter-spacing:.03em;text-transform:uppercase;display:flex;align-items:center;justify-content:center;gap:10px;cursor:pointer;box-shadow:inset 0 1px 0 rgba(255,255,255,.16);}
   .side-finish:hover{background:rgba(255,255,255,.25);}
   .side-finish .finish-ico{width:22px;height:22px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;flex:none;}
+  .side-mobile-back{display:none;}
 
   .etapas{flex:1;overflow-y:auto;padding:10px 12px;}
   .etapa{margin-bottom:8px;border:1px solid var(--n300);border-radius:var(--r-md);background:#fff;overflow:hidden;transition:border-color .12s;}
@@ -209,6 +210,9 @@
   .reader-back{height:34px;border:0;border-radius:18px;background:#ff8033;color:#fff;font-family:var(--sans);font-size:13px;font-weight:700;padding:0 17px 0 13px;display:inline-flex;align-items:center;gap:8px;cursor:pointer;box-shadow:0 2px 5px rgba(232,119,34,.24);}
   .reader-back:hover{background:var(--orange-dark);}
   .reader-back svg{width:17px;height:17px;flex:none;}
+  .reader-brand{display:none;margin-left:auto;margin-right:36px;color:#777;font-size:20px;font-weight:700;line-height:1;}
+  .reader-brand em{font-size:14px;font-weight:400;font-style:italic;margin-left:2px;}
+  body.certificate-reader .reader-brand{display:block;}
   .reader-frame{flex:1;width:100%;border:0;background:#252525;}
   .reader-video-wrap{display:none;flex:1;min-height:0;background:#202020;padding:28px;align-items:center;justify-content:center;}
   .reader-video{width:min(100%,1180px);max-height:calc(100vh - 106px);background:#000;box-shadow:0 18px 42px rgba(0,0,0,.34);}
@@ -216,6 +220,15 @@
   body.video-reader .reader-video-wrap{display:flex;}
   body.pdf-reader .reader-video-wrap{display:none;}
   body.pdf-reader .reader-frame{display:block;}
+
+  .certificate-overlay{position:fixed;inset:0;z-index:160;background:rgba(0,0,0,.5);display:none;align-items:flex-start;justify-content:center;padding-top:37px;}
+  body.certificate-loading .certificate-overlay{display:flex;}
+  .certificate-modal{width:min(346px,calc(100vw - 32px));min-height:120px;background:#fff;border-radius:16px;box-shadow:0 18px 42px rgba(0,0,0,.18);padding:22px 20px 22px;}
+  .certificate-modal-head{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;margin-bottom:16px;}
+  .certificate-modal h3{margin:0;color:#003b79;font-size:20px;font-weight:700;line-height:1.1;}
+  .certificate-close{width:28px;height:28px;border:0;background:transparent;color:#667085;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;}
+  .certificate-close:hover{color:#1f2937;}
+  .certificate-modal p{margin:0;color:#001b3f;font-size:13px;line-height:1.45;}
 
   .sidebar-toggle{position:fixed;left:14px;top:9px;z-index:80;width:38px;height:38px;border:0;border-radius:50%;background:#ff8033;color:#fff;display:none;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(232,119,34,.32);cursor:pointer;}
   .sidebar-toggle:hover{background:var(--orange-dark);}
@@ -245,17 +258,18 @@
     body{overflow:auto;overflow-x:hidden;background:var(--n50);}
     .app{height:auto;min-height:100vh;overflow:visible;flex-direction:column;}
     body.sidebar-collapsed .app{display:flex;}
-    .side{width:100%;border-right:0;border-bottom:1px solid var(--n300);}
+    .side{position:fixed;left:0;top:0;bottom:0;z-index:90;width:min(86vw,340px);max-width:340px;height:100vh;border-right:1px solid var(--n300);border-bottom:0;box-shadow:0 18px 42px rgba(0,0,0,.18);}
     .side-head{padding:14px 16px 8px;}
     .side-head h1{max-width:none;}
     .progress-box{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 18px;padding:10px 16px 16px;}
     .progress-box .pm{margin-top:0;}
     .side-finish{grid-column:1 / -1;margin-top:2px;}
-    .etapas{flex:none;max-height:360px;overflow-y:auto;padding:10px 12px 12px;}
+    .side-mobile-back{display:flex;align-items:center;justify-content:center;gap:8px;margin:10px 12px 0;height:38px;border:1px solid #f0c79a;border-radius:8px;background:#fff;color:var(--orange-dark);font-family:var(--sans);font-size:13px;font-weight:700;cursor:pointer;}
+    .side-mobile-back:hover{background:var(--orange-subtle);}
+    .etapas{flex:1;max-height:none;overflow-y:auto;padding:10px 12px 12px;}
     .main{flex:none;min-height:0;background:#fff;}
     .topbar{position:sticky;top:0;z-index:30;padding:0 14px;}
-    .crumbs{flex:1;overflow:hidden;flex-wrap:nowrap;white-space:nowrap;text-overflow:ellipsis;}
-    .crumbs a,.crumbs .sep,.crumbs .cur{flex:none;}
+    .topbar .backbtn,.crumbs{display:none;}
     .scroll{overflow:visible;}
     .tabs{top:56px;overflow-x:auto;scrollbar-width:none;}
     .tabs::-webkit-scrollbar{display:none;}
@@ -299,7 +313,7 @@
     .side-head h1{font-size:17px;}
     .progress-box{grid-template-columns:1fr;gap:12px;padding-bottom:14px;}
     .side-finish{margin-top:0;}
-    .etapas{max-height:330px;padding:8px;}
+    .etapas{max-height:none;padding:8px;}
     .etapa-h{padding:11px;}
     .conteudo{align-items:flex-start;padding:10px;}
     .cc-status,.cc-try{font-size:9.5px;}
@@ -370,11 +384,16 @@
       </button>
     </div>
 
+    <button class="side-mobile-back" type="button" aria-label="Voltar">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="11 17 6 12 11 7"/><path d="M18 12H6"/></svg>
+      <span>Voltar</span>
+    </button>
+
     <div class="etapas">
       <!-- Etapa 1 -->
       <div class="etapa done">
         <div class="etapa-h">
-          <div class="node"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20,6 9,17 4,12"/></svg></div>
+          <div class="node">1</div>
           <div class="eh-mid">
             <div class="name">Etapa 1</div>
             <div class="eh-date"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>Acesso · 14/06/2026 11:45</div>
@@ -617,12 +636,25 @@
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
       <span>Voltar para a trilha</span>
     </button>
+    <div class="reader-brand" aria-hidden="true">Lector<em>live</em></div>
   </div>
   <iframe class="reader-frame" id="pdfFrame" title="Manual Minha área"></iframe>
   <div class="reader-video-wrap">
     <video class="reader-video" id="videoFrame" controls playsinline></video>
   </div>
 </section>
+
+<div class="certificate-overlay" role="dialog" aria-modal="true" aria-labelledby="certificateTitle">
+  <div class="certificate-modal">
+    <div class="certificate-modal-head">
+      <h3 id="certificateTitle">Certificado</h3>
+      <button class="certificate-close" type="button" id="certificateClose" aria-label="Fechar">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <p>Aguarde enquanto seu certificado está sendo gerado.</p>
+  </div>
+</div>
 
 <button class="sidebar-toggle" type="button" id="sidebarToggle" aria-label="Mostrar menu da trilha">
   <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><line x1="5" y1="7" x2="19" y2="7"/><line x1="5" y1="12" x2="19" y2="12"/><line x1="5" y1="17" x2="19" y2="17"/></svg>
@@ -643,6 +675,14 @@
   // ── recolher/mostrar sidebar ──
   const sidebarClose = document.querySelector('.side-head .closebtn');
   const sidebarToggle = document.getElementById('sidebarToggle');
+  const mobileSidebarQuery = window.matchMedia('(max-width: 900px)');
+  function syncSidebarMode(){
+    if(mobileSidebarQuery.matches) document.body.classList.add('sidebar-collapsed');
+    else document.body.classList.remove('sidebar-collapsed');
+  }
+  syncSidebarMode();
+  if(mobileSidebarQuery.addEventListener) mobileSidebarQuery.addEventListener('change', syncSidebarMode);
+  else mobileSidebarQuery.addListener(syncSidebarMode);
   sidebarClose.addEventListener('click',()=>document.body.classList.add('sidebar-collapsed'));
   sidebarToggle.addEventListener('click',()=>document.body.classList.remove('sidebar-collapsed'));
 
@@ -650,12 +690,15 @@
   const pdfFrame = document.getElementById('pdfFrame');
   const videoFrame = document.getElementById('videoFrame');
   const readerBack = document.getElementById('readerBack');
+  const sideFinish = document.querySelector('.side-finish');
+  const certificateClose = document.getElementById('certificateClose');
+  let certificateTimer;
   function resetReader(){
     pdfFrame.src = 'about:blank';
     videoFrame.pause();
     videoFrame.removeAttribute('src');
     videoFrame.load();
-    document.body.classList.remove('pdf-reader','video-reader');
+    document.body.classList.remove('pdf-reader','video-reader','certificate-reader');
   }
   function openPdfReader(src){
     resetReader();
@@ -670,6 +713,19 @@
   function closePdfReader(){
     document.body.classList.remove('reader-open');
     resetReader();
+  }
+  function closeCertificateModal(){
+    window.clearTimeout(certificateTimer);
+    document.body.classList.remove('certificate-loading');
+  }
+  function openCertificateFlow(){
+    closeCertificateModal();
+    document.body.classList.add('certificate-loading');
+    certificateTimer = window.setTimeout(()=>{
+      document.body.classList.remove('certificate-loading');
+      openPdfReader('uploads/Certificado.pdf');
+      document.body.classList.add('certificate-reader');
+    }, 1400);
   }
   document.querySelectorAll('[data-open-pdf]').forEach(item=>{
     item.addEventListener('click',()=>openPdfReader(item.dataset.openPdf));
@@ -690,6 +746,8 @@
     });
   });
   readerBack.addEventListener('click', closePdfReader);
+  sideFinish.addEventListener('click', openCertificateFlow);
+  certificateClose.addEventListener('click', closeCertificateModal);
 
   // ── accordion (etapas) ──
   document.querySelectorAll('.etapa .etapa-h').forEach(h=>{
