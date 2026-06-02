@@ -53,9 +53,8 @@
   .pm .pt b{font-size:12px;font-weight:700;color:#fff;}
   .meter{height:5px;border-radius:99px;background:rgba(255,255,255,.34);overflow:hidden;}
   .meter i{display:block;width:calc(var(--p)*1%);height:100%;border-radius:inherit;background:#fff;}
-  .side-finish{width:100%;height:46px;margin-top:18px;border:1px solid rgba(255,255,255,.35);border-radius:10px;background:rgba(255,255,255,.18);color:#fff;font-family:var(--sans);font-size:12px;font-weight:800;letter-spacing:.03em;text-transform:uppercase;display:flex;align-items:center;justify-content:center;gap:10px;cursor:pointer;box-shadow:inset 0 1px 0 rgba(255,255,255,.16);}
+  .side-finish{width:100%;height:46px;margin-top:18px;border:1px solid rgba(255,255,255,.35);border-radius:10px;background:rgba(255,255,255,.18);color:#fff;font-family:var(--sans);font-size:12px;font-weight:800;letter-spacing:.03em;text-transform:uppercase;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:inset 0 1px 0 rgba(255,255,255,.16);}
   .side-finish:hover{background:rgba(255,255,255,.25);}
-  .side-finish .finish-ico{width:22px;height:22px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;flex:none;}
   .side-mobile-back{display:none;}
 
   .etapas{flex:1;overflow-y:auto;padding:10px 12px;}
@@ -101,7 +100,9 @@
   .cc-status.progress{color:var(--teal);}
   .cc-status.muted{color:var(--sub);}
   .cc-status.blocked{color:#7a8089;}
-  .cc-try{font-size:11px;font-weight:700;color:var(--green);margin-top:5px;}
+  .cc-try{font-size:11px;font-weight:700;color:var(--green);margin-top:5px;white-space:nowrap;}
+  .cc-meta-row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:5px;}
+  .cc-meta-row .cc-status,.cc-meta-row .cc-try{margin-top:0;}
 
   /* ───── Main column ───── */
   .main{flex:1;display:flex;flex-direction:column;min-width:0;}
@@ -389,9 +390,6 @@
         <div class="meter" style="--p:100;"><i></i></div>
       </div>
       <button class="side-finish" type="button">
-        <span class="finish-ico" aria-hidden="true">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v9"/><path d="m8 7 4-4 4 4"/><path d="M5 13v5a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-5"/></svg>
-        </span>
         <span>Finalizar trilha</span>
       </button>
     </div>
@@ -418,9 +416,8 @@
             <div class="cc-mid">
               <div class="cc-name">Conteúdo 1 — Manual Minha área.pdf</div>
               <div class="cc-type">Documento</div>
-              <div class="cc-status approved">Aprovado</div>
               <div class="pa"><span><span class="lab">P</span> 100%</span><span><span class="lab">A</span> 100%</span></div>
-              <div class="cc-try">Tentativa 1/2</div>
+              <div class="cc-meta-row"><div class="cc-status approved">Aprovado</div><div class="cc-try">Tentativa 1/2</div></div>
             </div>
           </div>
         </div>
@@ -441,9 +438,8 @@
             <div class="cc-mid">
               <div class="cc-name">Conteúdo 2 — Linguagens de Programação</div>
               <div class="cc-type">Vídeo</div>
-              <div class="cc-status progress">Em andamento</div>
               <div class="pa"><span><span class="lab">P</span> 100%</span><span><span class="lab">A</span> 100%</span></div>
-              <div class="cc-try">Tentativa 2/3</div>
+              <div class="cc-meta-row"><div class="cc-status progress">Em andamento</div><div class="cc-try">Tentativa 2/3</div></div>
             </div>
           </div>
           <div class="conteudo">
@@ -460,7 +456,7 @@
           </div>
           <div class="conteudo">
             <div class="ctico" style="background:var(--warn-light)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--warn)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9,11 12,14 22,4"/><path d="M21,12v7a2,2,0,0,1-2,2H5a2,2,0,0,1-2-2V5a2,2,0,0,1,2-2h11"/></svg></div>
-            <div class="cc-mid"><div class="cc-name">Avaliação_Excel (5).xlsx</div><div class="cc-type">Avaliação</div><div class="cc-status failed">Reprovado</div><div class="cc-try">Tentativa 1/2</div></div>
+            <div class="cc-mid"><div class="cc-name">Avaliação_Excel (5).xlsx</div><div class="cc-type">Avaliação</div><div class="cc-meta-row"><div class="cc-status failed">Reprovado</div><div class="cc-try">Tentativa 1/2</div></div></div>
           </div>
         </div>
       </div>
@@ -755,11 +751,7 @@
   document.querySelectorAll('.etapa .etapa-h').forEach(h=>{
     h.addEventListener('click',()=>{
       const etapa = h.closest('.etapa');
-      const shouldOpen = !etapa.classList.contains('open');
-      document.querySelectorAll('.etapa.open').forEach(e=>{
-        if(e !== etapa) e.classList.remove('open');
-      });
-      etapa.classList.toggle('open', shouldOpen);
+      etapa.classList.toggle('open');
     });
   });
 
