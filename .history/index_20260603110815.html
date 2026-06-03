@@ -76,10 +76,10 @@
   .side-finish:hover{background:rgba(255,255,255,.25);}
   .side-mobile-back{display:none;}
 
-  .etapas{flex:1;overflow-y:auto;padding:8px 6px;}
+  .etapas{flex:1;overflow-y:auto;padding:10px 12px;}
   .etapa{margin-bottom:6px;border:1px solid var(--n300);border-radius:var(--r-md);background:#fff;overflow:hidden;transition:border-color .12s;}
   .etapa.open{border-color:var(--orange);}
-  .etapa-h{height:64px;display:flex;align-items:center;gap:12px;padding:12px 10px;cursor:pointer;user-select:none;}
+  .etapa-h{height:64px;display:flex;align-items:center;gap:12px;padding:12px;cursor:pointer;user-select:none;}
   .etapa-h:hover{background:var(--n50);}
   .node{width:28px;height:28px;border-radius:var(--r-md);flex:none;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;border:2px solid var(--n400);color:var(--n600);background:#fff;}
   .etapa.done .node{background:var(--green-light);border-color:var(--green);color:var(--green);}
@@ -96,7 +96,7 @@
   .etapa.open .etapa-h .chev{transform:rotate(180deg);}
   .etapa-body{border-top:1px solid var(--n200);display:none;}
   .etapa.open .etapa-body{display:block;animation:fade .16s ease;}
-  .conteudo{display:flex;align-items:flex-start;gap:8px;padding:10px 8px;border-bottom:1px solid var(--n100);cursor:pointer;transition:background .1s;}
+  .conteudo{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;border-bottom:1px solid var(--n100);cursor:pointer;transition:background .1s;}
   .conteudo:last-child{border-bottom:none;}
   .conteudo:hover{background:var(--n50);}
   .conteudo.checked:not(.active){background:rgba(61,138,82,.05);}
@@ -107,7 +107,7 @@
   @keyframes paAppear{from{opacity:0;transform:scale(.7)}to{opacity:1;transform:scale(1)}}
   .pa-pie.filling{background:radial-gradient(circle at center,var(--n0) 0 54%,transparent 56%),conic-gradient(var(--orange) calc(var(--fpct)*1%),var(--n300) 0);animation:fillDonut .8s cubic-bezier(.25,.8,.25,1) forwards;}
   .pa.pa-new{animation:paAppear .25s ease-out;}
-  .conteudo.active{background:var(--orange-subtle);border-left:3px solid var(--orange);padding-left:5px;}
+  .conteudo.active{background:var(--orange-subtle);border-left:3px solid var(--orange);padding-left:9px;}
   .conteudo.locked{background:#f7f7f7;cursor:not-allowed;opacity:.74;}
   .conteudo.locked:hover{background:#f7f7f7;}
   .conteudo.locked .ctico{background:#eceff1!important;}
@@ -163,11 +163,17 @@
 
   .scroll{flex:1;overflow-y:auto;}
   .pagehead{padding:14px 24px 0;}
-  .trail-summary{min-height:118px;background:#fff;border:1px solid #dcdcdc;border-radius:6px;box-shadow:0 1px 3px rgba(0,0,0,.14);display:flex;align-items:center;gap:20px;padding:16px 20px 16px 22px;}
-  .trail-cover{width:148px;height:84px;margin:0;border:1px solid #ececec;border-radius:6px;overflow:hidden;background:#f6f7f8;flex:none;}
+  .trail-summary{min-height:114px;background:#fff;border:1px solid #dcdcdc;border-radius:6px;box-shadow:0 1px 3px rgba(0,0,0,.14);display:flex;align-items:center;gap:20px;padding:18px 20px 18px 22px;}
+  .trail-cover{width:112px;height:72px;margin:0;border:1px solid #ececec;border-radius:6px;overflow:hidden;background:#f6f7f8;flex:none;}
   .trail-cover img{display:block;width:100%;height:100%;object-fit:cover;}
   .trail-copy{min-width:0;flex:1;}
-  .trail-copy h2{font-size:20px;font-weight:700;margin:0;color:#111;line-height:1.2;}
+  .trail-copy h2{font-size:20px;font-weight:700;margin:0 0 10px;color:#111;line-height:1.2;}
+  .trail-meta{display:flex;align-items:center;gap:12px;flex-wrap:wrap;font-size:12px;font-weight:500;color:#6f7782;line-height:1.3;}
+  .trail-meta .dot{width:6px;height:6px;border-radius:50%;background:var(--teal);display:inline-block;margin-right:-4px;}
+  .trail-meta .status{color:var(--teal);font-weight:700;}
+  .continue-btn{height:36px;border:0;border-radius:4px;background:var(--orange);color:#fff;font-family:var(--sans);font-size:13px;font-weight:700;padding:0 15px 0 16px;display:inline-flex;align-items:center;gap:9px;white-space:nowrap;cursor:pointer;box-shadow:none;}
+  .continue-btn .ui-icon{font-size:14px;}
+  .continue-btn:hover{background:var(--orange-dark);}
   .mobile-trail-hero{display:none;}
   .tabs{display:flex;border-bottom:1px solid var(--n300);padding:0 32px;margin-top:0;position:sticky;top:0;background:#fff;z-index:10;}
   .tab{padding:11px 0;margin-right:28px;font-size:14px;font-weight:500;color:var(--muted);border-bottom:2px solid transparent;margin-bottom:-1px;cursor:pointer;letter-spacing:.04em;text-transform:uppercase;transition:color .12s;white-space:nowrap;}
@@ -302,6 +308,7 @@
     .side{width:288px;}
     .kpis{grid-template-columns:repeat(2,1fr);}
     .trail-summary{gap:14px;}
+    .continue-btn{padding:0 13px;}
   }
 
   @media (max-width:900px){
@@ -317,7 +324,7 @@
     .side-finish{grid-column:1 / -1;margin-top:2px;}
     .side-mobile-back{display:flex;align-items:center;justify-content:center;gap:8px;margin:10px 12px 0;height:38px;border:1px solid #f0c79a;border-radius:8px;background:#fff;color:var(--orange-dark);font-family:var(--sans);font-size:13px;font-weight:700;cursor:pointer;}
     .side-mobile-back:hover{background:var(--orange-subtle);}
-    .etapas{flex:1;max-height:none;overflow-y:auto;padding:8px 6px 10px;}
+    .etapas{flex:1;max-height:none;overflow-y:auto;padding:10px 12px 12px;}
     .main{flex:none;min-height:0;background:#fff;}
     .topbar{position:sticky;top:0;z-index:30;padding:0 14px;}
     .topbar .btn-accent,.crumbs{display:none;}
@@ -337,10 +344,13 @@
 
   @media (max-width:760px){
     .pagehead{padding:14px 14px 0;}
-    .trail-summary{display:grid;grid-template-columns:112px minmax(0,1fr);align-items:center;gap:12px 14px;min-height:0;padding:14px;}
-    .trail-cover{width:112px;height:66px;}
+    .trail-summary{display:grid;grid-template-columns:96px minmax(0,1fr);align-items:center;gap:12px 14px;min-height:0;padding:14px;}
+    .trail-cover{width:96px;height:60px;}
     .trail-copy{min-width:0;}
-    .trail-copy h2{font-size:18px;}
+    .trail-copy h2{font-size:18px;margin-bottom:8px;}
+    .trail-meta{gap:8px;font-size:11.5px;}
+    .continue-btn{width:100%;justify-content:center;}
+    .trail-summary .continue-btn{grid-column:1 / -1;}
     .tabs{padding:0 14px;margin-top:14px;}
     .tab{font-size:12px;margin-right:22px;padding:10px 0;}
     .panel{padding:18px 14px 40px;}
@@ -365,18 +375,23 @@
     .side-head h1{font-size:17px;}
     .progress-box{grid-template-columns:1fr;gap:12px;padding-bottom:14px;}
     .side-finish{margin-top:0;}
-    .etapas{max-height:none;padding:6px;}
-    .etapa-h{height:64px;padding:11px 9px;}
-    .conteudo{padding:10px 8px;}
+    .etapas{max-height:none;padding:8px;}
+    .etapa-h{height:64px;padding:11px;}
+    .conteudo{padding:10px;}
     .topbar{height:52px;gap:10px;padding:0 10px;}
     .btn-accent{width:34px;height:34px;}
     .crumbs{font-size:12px;}
     .topbar-actions{gap:10px;}
     .iconbtn{display:none;}
     .avatar{width:30px;height:30px;}
-    .trail-summary{grid-template-columns:98px minmax(0,1fr);padding:12px;}
-    .trail-cover{width:98px;height:58px;}
+    .trail-summary{grid-template-columns:82px minmax(0,1fr);padding:12px;}
+    .trail-cover{width:82px;height:52px;}
     .trail-copy h2{font-size:17px;}
+    .trail-meta{display:block;}
+    .trail-meta span{display:block;margin-top:3px;}
+    .trail-meta span:first-child{margin-top:0;}
+    .trail-meta .dot{display:none;}
+    .continue-btn{height:38px;font-size:12px;}
     .tabs{top:52px;}
     .plot-scroll{padding-bottom:2px;}
     .bar-col .blabel{font-size:10px;}
@@ -390,8 +405,8 @@
     .conteudo .ctico{grid-column:1;grid-row:1;}
     .conteudo .cc-mid{grid-column:2;grid-row:1;min-width:0;}
     .pa{flex-wrap:wrap;gap:3px 8px;}
-    .trail-summary{grid-template-columns:88px minmax(0,1fr);gap:10px 12px;}
-    .trail-cover{width:88px;height:54px;}
+    .trail-summary{grid-template-columns:74px minmax(0,1fr);gap:10px 12px;}
+    .trail-cover{width:74px;height:48px;}
     .trail-copy h2{font-size:16px;}
   }
 </style>
@@ -596,7 +611,16 @@
           </figure>
           <div class="trail-copy">
             <h2>Trilha Completa Automação</h2>
+            <div class="trail-meta">
+              <span>Etapa 2 de 4</span>
+              <span>4 de 23 conteúdos concluídos</span>
+              <span class="status"><i class="dot"></i>Em andamento</span>
+            </div>
           </div>
+          <button class="continue-btn" type="button" data-open-video="uploads/linguagens-programacao.mp4">
+            <span>Continuar trilha</span>
+            <i class="ui-icon icon-arrow-right" aria-hidden="true"></i>
+          </button>
         </section>
       </div>
       <div class="tabs">
