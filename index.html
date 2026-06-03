@@ -99,6 +99,9 @@
   .conteudo{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;border-bottom:1px solid var(--n100);cursor:pointer;transition:background .1s;}
   .conteudo:last-child{border-bottom:none;}
   .conteudo:hover{background:var(--n50);}
+  .conteudo.checked:not(.active){background:rgba(61,138,82,.05);}
+  .conteudo.checked .ctico{color:var(--green);transition:color .15s;}
+  .ctico{transition:color .15s;}
   .conteudo.active{background:var(--orange-subtle);border-left:3px solid var(--orange);padding-left:9px;}
   .conteudo.locked{background:#f7f7f7;cursor:not-allowed;opacity:.74;}
   .conteudo.locked:hover{background:#f7f7f7;}
@@ -895,6 +898,7 @@
   // ── init ──
   renderChart('all');
   document.querySelectorAll('.ctico').forEach(el=>{el.removeAttribute('style');el.innerHTML='<i class="ui-icon icon-checkbox-2026" aria-hidden="true"></i>';});
+  document.querySelectorAll('.conteudo:not(.locked)').forEach(el=>el.addEventListener('click',()=>el.classList.toggle('checked')));
   let saved='desempenho';
   try{ saved = localStorage.getItem('lector-trilhaA-tab') || 'desempenho'; }catch(e){}
   activate(saved);
