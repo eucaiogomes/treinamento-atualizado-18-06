@@ -148,6 +148,15 @@
   .trail-cover img{display:block;width:100%;height:100%;object-fit:cover;}
   .trail-copy{min-width:0;flex:1;}
   .trail-copy h2{font-size:22px;font-weight:700;margin:0;color:#111;line-height:1.2;}
+  .inline-media-reader{display:none;height:clamp(520px,calc(100vh - 150px),820px);min-height:0;background:#252525;border:1px solid #dcdcdc;border-radius:6px;box-shadow:0 1px 3px rgba(0,0,0,.14);overflow:hidden;flex-direction:column;}
+  body.inline-pdf-open .trail-summary,body.inline-video-open .trail-summary{display:none;}
+  body.inline-pdf-open .inline-media-reader,body.inline-video-open .inline-media-reader{display:flex;}
+  .inline-pdf-head{height:44px;flex:none;background:#fff;border-bottom:1px solid var(--n300);display:flex;align-items:center;padding:0 16px;}
+  .inline-pdf-title{font-size:13px;font-weight:700;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .inline-pdf-frame{width:100%;flex:1;min-height:0;border:0;background:#252525;}
+  .inline-video-frame{display:none;width:100%;flex:1;min-height:0;background:#111;object-fit:contain;}
+  body.inline-video-open .inline-pdf-frame{display:none;}
+  body.inline-video-open .inline-video-frame{display:block;}
   .mobile-trail-hero{display:none;}
   .tabs{display:flex;border-bottom:1px solid var(--n300);padding:0 32px;margin-top:0;position:sticky;top:0;background:#fff;z-index:10;}
   .tab{padding:11px 0;margin-right:28px;font-size:14px;font-weight:500;color:var(--muted);border-bottom:2px solid transparent;margin-bottom:-1px;cursor:pointer;letter-spacing:.04em;text-transform:uppercase;transition:color .12s;white-space:nowrap;}
@@ -305,10 +314,12 @@
     .topbar{position:sticky;top:0;z-index:30;padding:0 14px;}
     .topbar .btn-accent,.crumbs{display:none;}
     .mobile-trail-hero{display:block;margin:14px 14px 0;padding:18px 16px 16px;border-radius:8px;background:#ff8033;color:#fff;box-shadow:0 2px 7px rgba(232,119,34,.22);}
-    .mobile-trail-hero h1{margin:0 0 14px;font-size:21px;font-weight:700;line-height:1.12;color:#fff;}
-    .mobile-continue-btn{width:100%;height:40px;border:1px solid rgba(255,255,255,.5);border-radius:6px;background:#fff;color:var(--orange-dark);font-family:var(--sans);font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;}
-    .mobile-continue-btn:hover{background:#fff7ef;}
+    .mobile-trail-hero h1{margin:0 0 18px;font-size:21px;font-weight:700;line-height:1.12;color:#fff;}
+    .mobile-progress{display:grid;gap:14px;}
+    .mobile-progress .pm .pt{margin-bottom:7px;}
     .pagehead{display:none;}
+    body.inline-pdf-open .pagehead,body.inline-video-open .pagehead{display:block;padding:10px 10px 0;}
+    .inline-media-reader{height:calc(100vh - 72px);min-height:480px;}
     .scroll{overflow:visible;}
     .tabs{top:56px;overflow-x:auto;scrollbar-width:none;}
     .tabs::-webkit-scrollbar{display:none;}
@@ -427,7 +438,7 @@
                 <span class="pa-item" style="--pct:100"><span class="lab" title="Progresso: 100%">P</span><span class="pa-pie">100%</span></span>
                 <span class="pa-item" style="--pct:100"><span class="lab" title="Aproveitamento: 100%">A</span><span class="pa-pie">100%</span></span>
               </div>
-              <div class="cc-name" title="Conteúdo 1 — Manual Minha área.pdf">Conteúdo 1 — Manual Minha área.pdf</div>
+              <div class="cc-name" title="Boas-vindas ao Suporte Lector">Boas-vindas ao Suporte Lector</div>
               <div class="cc-type">Documento</div>
               <div class="cc-meta-row"><div class="cc-status approved">Aprovado</div></div>
             </div>
@@ -440,22 +451,22 @@
                 <span class="pa-item" style="--pct:100"><span class="lab" title="Progresso: 100%">P</span><span class="pa-pie">100%</span></span>
                 <span class="pa-item" style="--pct:100"><span class="lab" title="Aproveitamento: 100%">A</span><span class="pa-pie">100%</span></span>
               </div>
-              <div class="cc-name" title="Conteúdo 2 — Linguagens de Programação">Conteúdo 2 — Linguagens de Programação</div>
+              <div class="cc-name" title="Visão geral da plataforma Lector">Visão geral da plataforma Lector</div>
               <div class="cc-type">Vídeo</div>
               <div class="cc-meta-row"><div class="cc-status progress">Em andamento</div></div>
             </div>
           </div>
           <div class="conteudo">
             <div class="ctico" style="background:var(--teal-light)"><i class="ui-icon icon-png ui-teal" aria-hidden="true"></i></div>
-            <div class="cc-mid"><div class="cc-name" title="qrcode lista de presença — Presencial.png">qrcode lista de presença — Presencial.png</div><div class="cc-type">Documento</div><div class="cc-status muted">Não visualizado</div></div>
+            <div class="cc-mid"><div class="cc-name" title="Acesso e navegação na Minha Área">Acesso e navegação na Minha Área</div><div class="cc-type">Documento</div><div class="cc-status muted">Não visualizado</div></div>
           </div>
           <div class="conteudo">
             <div class="ctico" style="background:var(--teal-light)"><i class="ui-icon icon-pdf ui-teal" aria-hidden="true"></i></div>
-            <div class="cc-mid"><div class="cc-name" title="Manual Lector 2026/02 — Social.pdf">Manual Lector 2026/02 — Social.pdf</div><div class="cc-type">Documento</div><div class="cc-status muted">Não iniciado</div></div>
+            <div class="cc-mid"><div class="cc-name" title="Gestão de usuários e permissões">Gestão de usuários e permissões</div><div class="cc-type">Documento</div><div class="cc-status muted">Não iniciado</div></div>
           </div>
           <div class="conteudo">
             <div class="ctico" style="background:var(--teal-light)"><i class="ui-icon icon-pdf ui-teal" aria-hidden="true"></i></div>
-            <div class="cc-mid"><div class="cc-name" title="Menu validação de termos — Trilhas.pdf">Menu validação de termos — Trilhas.pdf</div><div class="cc-type">Documento</div><div class="cc-status muted">Não visualizado</div></div>
+            <div class="cc-mid"><div class="cc-name" title="Configurações essenciais da plataforma">Configurações essenciais da plataforma</div><div class="cc-type">Documento</div><div class="cc-status muted">Não visualizado</div></div>
           </div>
           <div class="conteudo">
             <div class="ctico" style="background:var(--warn-light)"><i class="ui-icon icon-file-xls ui-warn" aria-hidden="true"></i></div>
@@ -465,34 +476,50 @@
                 <span class="pa-item" style="--pct:100"><span class="lab" title="Progresso: 100%">P</span><span class="pa-pie">100%</span></span>
                 <span class="pa-item" style="--pct:20"><span class="lab" title="Aproveitamento: 20%">A</span><span class="pa-pie">20%</span></span>
               </div>
-              <div class="cc-name" title="Avaliação_Excel (5).xlsx">Avaliação_Excel (5).xlsx</div>
+              <div class="cc-name" title="Avaliação — Fundamentos do Suporte Lector">Avaliação — Fundamentos do Suporte Lector</div>
               <div class="cc-type">Avaliação</div>
               <div class="cc-meta-row"><div class="cc-status failed">Reprovado</div></div>
             </div>
           </div>
-          <div class="conteudo locked" aria-disabled="true">
+          <div class="conteudo">
             <div class="ctico" style="background:var(--warn-light)"><i class="ui-icon icon-questions ui-warn" aria-hidden="true"></i></div>
-            <div class="cc-mid"><div class="cc-name">todas na mesma página Thiago</div><div class="cc-type">Avaliação</div><div class="cc-status blocked">Conteúdo bloqueado</div></div>
+            <div class="cc-mid">
+              <div class="cc-try">Tentativa 1/1</div>
+              <div class="pa"><span class="pa-item" style="--pct:100"><span class="lab" title="Progresso: 100%">P</span><span class="pa-pie">100%</span></span><span class="pa-item" style="--pct:100"><span class="lab" title="Aproveitamento: 100%">A</span><span class="pa-pie">100%</span></span></div>
+              <div class="cc-name" title="Avaliação — Registro e classificação de chamados">Avaliação — Registro e classificação de chamados</div><div class="cc-type">Avaliação</div><div class="cc-status approved">Aprovado</div>
+            </div>
           </div>
-          <div class="conteudo locked" aria-disabled="true">
+          <div class="conteudo">
             <div class="ctico" style="background:var(--warn-light)"><i class="ui-icon icon-questions ui-warn" aria-hidden="true"></i></div>
-            <div class="cc-mid"><div class="cc-name">uma por página Thiago</div><div class="cc-type">Avaliação</div><div class="cc-status blocked">Conteúdo bloqueado</div></div>
+            <div class="cc-mid">
+              <div class="cc-try">Tentativa 1/1</div>
+              <div class="pa"><span class="pa-item" style="--pct:100"><span class="lab" title="Progresso: 100%">P</span><span class="pa-pie">100%</span></span><span class="pa-item" style="--pct:100"><span class="lab" title="Aproveitamento: 100%">A</span><span class="pa-pie">100%</span></span></div>
+              <div class="cc-name" title="Avaliação — Diagnóstico de problemas frequentes">Avaliação — Diagnóstico de problemas frequentes</div><div class="cc-type">Avaliação</div><div class="cc-status approved">Aprovado</div>
+            </div>
           </div>
-          <div class="conteudo locked" aria-disabled="true">
+          <div class="conteudo">
             <div class="ctico" style="background:var(--warn-light)"><i class="ui-icon icon-questions ui-warn" aria-hidden="true"></i></div>
-            <div class="cc-mid"><div class="cc-name">Reação uma por página Thiago</div><div class="cc-type">Avaliação</div><div class="cc-status blocked">Conteúdo bloqueado</div></div>
+            <div class="cc-mid">
+              <div class="cc-try">Tentativa 1/1</div>
+              <div class="pa"><span class="pa-item" style="--pct:100"><span class="lab" title="Progresso: 100%">P</span><span class="pa-pie">100%</span></span><span class="pa-item" style="--pct:100"><span class="lab" title="Aproveitamento: 100%">A</span><span class="pa-pie">100%</span></span></div>
+              <div class="cc-name" title="Avaliação — Comunicação com o cliente">Avaliação — Comunicação com o cliente</div><div class="cc-type">Avaliação</div><div class="cc-status approved">Aprovado</div>
+            </div>
           </div>
-          <div class="conteudo locked" aria-disabled="true">
+          <div class="conteudo">
             <div class="ctico" style="background:var(--warn-light)"><i class="ui-icon icon-questions ui-warn" aria-hidden="true"></i></div>
-            <div class="cc-mid"><div class="cc-name">Reação todas em uma página Thiago</div><div class="cc-type">Avaliação</div><div class="cc-status blocked">Conteúdo bloqueado</div></div>
+            <div class="cc-mid">
+              <div class="cc-try">Tentativa 1/1</div>
+              <div class="pa"><span class="pa-item" style="--pct:100"><span class="lab" title="Progresso: 100%">P</span><span class="pa-pie">100%</span></span><span class="pa-item" style="--pct:100"><span class="lab" title="Aproveitamento: 100%">A</span><span class="pa-pie">100%</span></span></div>
+              <div class="cc-name" title="Avaliação — Escalonamento e resolução de chamados">Avaliação — Escalonamento e resolução de chamados</div><div class="cc-type">Avaliação</div><div class="cc-status approved">Aprovado</div>
+            </div>
           </div>
           <div class="conteudo">
             <div class="ctico"></div>
-            <div class="cc-mid"><div class="cc-name" title="Checklist - HML - Mika (4).xlsx">Checklist - HML - Mika (4).xlsx</div><div class="cc-type">Documento</div><div class="cc-status muted">Não iniciado</div></div>
+            <div class="cc-mid"><div class="cc-name" title="Boas práticas no atendimento Lector">Boas práticas no atendimento Lector</div><div class="cc-type">Documento</div><div class="cc-status muted">Não iniciado</div></div>
           </div>
           <div class="conteudo">
             <div class="ctico"></div>
-            <div class="cc-mid"><div class="cc-name" title="Apresentação faculdade socialização 14.07 2 (7).pptx">Apresentação faculdade socialização 14.07 2 (7).pptx</div><div class="cc-type">Documento</div><div class="cc-status muted">Não iniciado</div></div>
+            <div class="cc-mid"><div class="cc-name" title="Base de conhecimento do Suporte Lector">Base de conhecimento do Suporte Lector</div><div class="cc-type">Documento</div><div class="cc-status muted">Não iniciado</div></div>
           </div>
       </div>
     </div>
@@ -514,10 +541,16 @@
     <div class="scroll">
       <section class="mobile-trail-hero" aria-label="Treinamento atual">
         <h1>Treinamento Skill Suporte Lector</h1>
-        <button class="mobile-continue-btn" type="button" data-open-video="uploads/linguagens-programacao.mp4">
-          <span>Continuar de onde parou</span>
-          <i class="ui-icon icon-arrow-right" aria-hidden="true"></i>
-        </button>
+        <div class="mobile-progress" aria-label="Progresso do treinamento">
+          <div class="pm">
+            <div class="pt"><span>Progresso</span><b>100%</b></div>
+            <div class="meter" style="--p:100;"><i></i></div>
+          </div>
+          <div class="pm">
+            <div class="pt"><span>Aproveitamento</span><b>100%</b></div>
+            <div class="meter" style="--p:100;"><i></i></div>
+          </div>
+        </div>
       </section>
       <div class="pagehead">
         <section class="trail-summary" aria-label="Resumo do treinamento">
@@ -527,6 +560,13 @@
           <div class="trail-copy">
             <h2>Treinamento Skill Suporte Lector</h2>
           </div>
+        </section>
+        <section class="inline-media-reader" aria-label="Conteúdo do treinamento">
+          <div class="inline-pdf-head">
+            <strong class="inline-pdf-title" id="inlineMediaTitle">Boas-vindas ao Suporte Lector</strong>
+          </div>
+          <iframe class="inline-pdf-frame" id="inlinePdfFrame" title="Boas-vindas ao Suporte Lector"></iframe>
+          <video class="inline-video-frame" id="inlineVideoFrame" controls playsinline></video>
         </section>
       </div>
       <div class="tabs">
@@ -593,13 +633,18 @@
               </tr>
             </thead>
             <tbody>
-              <tr><td><div class="ct-inline"><span>Conteúdo 1 — <a>Manual Lector 2026/01 — Minha área.pdf</a></span></div></td><td class="a-good">100,00%</td><td>—</td><td>—</td></tr>
-              <tr><td><div class="ct-inline"><span>Conteúdo 2 — <a>Linguagens-de-Programacao (2).webp</a></span></div></td><td class="a-good">100,00%</td><td>—</td><td>—</td></tr>
-              <tr><td><div class="ct-inline"><span>Conteúdo 3 — <a>qrcode lista de presença — Presencial.png</a></span></div></td><td class="a-zero">0,00%</td><td>—</td><td>—</td></tr>
-              <tr><td><div class="ct-inline"><span>Conteúdo 4 — <a>Manual Lector 2026/02 — Social.pdf</a></span></div></td><td class="a-zero">0,00%</td><td>—</td><td>—</td></tr>
-              <tr><td><div class="ct-inline"><span>Conteúdo 5 — <a>Treinamento Trilha Automação 1</a></span></div></td><td class="a-zero">0,00%</td><td>01:30:00</td><td>—</td></tr>
-              <tr><td><div class="ct-inline"><span>Conteúdo 6 — <a>todas na mesma página Thiago</a></span></div></td><td class="a-zero">0,00%</td><td>—</td><td>—</td></tr>
-              <tr><td><div class="ct-inline"><span>Conteúdo 7 — <a>uma por página Thiago</a></span></div></td><td class="a-zero">0,00%</td><td>—</td><td>—</td></tr>
+              <tr><td><div class="ct-inline"><span>Conteúdo 1 — <a>Boas-vindas ao Suporte Lector</a></span></div></td><td class="a-good">100,00%</td><td>—</td><td>—</td></tr>
+              <tr><td><div class="ct-inline"><span>Conteúdo 2 — <a>Visão geral da plataforma Lector</a></span></div></td><td class="a-good">100,00%</td><td>—</td><td>—</td></tr>
+              <tr><td><div class="ct-inline"><span>Conteúdo 3 — <a>Acesso e navegação na Minha Área</a></span></div></td><td class="a-zero">0,00%</td><td>—</td><td>—</td></tr>
+              <tr><td><div class="ct-inline"><span>Conteúdo 4 — <a>Gestão de usuários e permissões</a></span></div></td><td class="a-zero">0,00%</td><td>—</td><td>—</td></tr>
+              <tr><td><div class="ct-inline"><span>Conteúdo 5 — <a>Configurações essenciais da plataforma</a></span></div></td><td class="a-zero">0,00%</td><td>01:30:00</td><td>—</td></tr>
+              <tr><td><div class="ct-inline"><span>Conteúdo 6 — <a>Avaliação — Fundamentos do Suporte Lector</a></span></div></td><td class="a-zero">20,00%</td><td>—</td><td>—</td></tr>
+              <tr><td><div class="ct-inline"><span>Conteúdo 7 — <a>Avaliação — Registro e classificação de chamados</a></span></div></td><td class="a-good">100,00%</td><td>—</td><td>—</td></tr>
+              <tr><td><div class="ct-inline"><span>Conteúdo 8 — <a>Avaliação — Diagnóstico de problemas frequentes</a></span></div></td><td class="a-good">100,00%</td><td>—</td><td>—</td></tr>
+              <tr><td><div class="ct-inline"><span>Conteúdo 9 — <a>Avaliação — Comunicação com o cliente</a></span></div></td><td class="a-good">100,00%</td><td>—</td><td>—</td></tr>
+              <tr><td><div class="ct-inline"><span>Conteúdo 10 — <a>Avaliação — Escalonamento e resolução de chamados</a></span></div></td><td class="a-good">100,00%</td><td>—</td><td>—</td></tr>
+              <tr><td><div class="ct-inline"><span>Conteúdo 11 — <a>Boas práticas no atendimento Lector</a></span></div></td><td class="a-zero">0,00%</td><td>—</td><td>—</td></tr>
+              <tr><td><div class="ct-inline"><span>Conteúdo 12 — <a>Base de conhecimento do Suporte Lector</a></span></div></td><td class="a-zero">0,00%</td><td>—</td><td>—</td></tr>
             </tbody>
           </table>
         </div>
@@ -671,6 +716,9 @@
 
   // ── leitor de mídias ──
   const pdfFrame = document.getElementById('pdfFrame');
+  const inlinePdfFrame = document.getElementById('inlinePdfFrame');
+  const inlineVideoFrame = document.getElementById('inlineVideoFrame');
+  const inlineMediaTitle = document.getElementById('inlineMediaTitle');
   const videoFrame = document.getElementById('videoFrame');
   const readerBack = document.getElementById('readerBack');
   const certificateClose = document.getElementById('certificateClose');
@@ -683,11 +731,41 @@
     document.body.classList.remove('pdf-reader','video-reader','certificate-reader');
   }
   function openPdfReader(src){
+    closeInlineMedia();
     resetReader();
     pdfFrame.src = src + '#toolbar=1&navpanes=1&view=FitH';
     document.body.classList.add('reader-open','pdf-reader');
   }
+  function openInlinePdf(src,title){
+    closeInlineMedia();
+    inlineMediaTitle.textContent = title || 'Boas-vindas ao Suporte Lector';
+    inlinePdfFrame.src = src + '#toolbar=1&navpanes=1&view=FitH';
+    document.body.classList.add('inline-pdf-open');
+    document.querySelector('.scroll').scrollTop = 0;
+    if(window.matchMedia('(max-width:900px)').matches){
+      document.body.classList.add('sidebar-collapsed');
+    }
+  }
+  function openInlineVideo(src,title){
+    closeInlineMedia();
+    inlineMediaTitle.textContent = title || 'Visão geral da plataforma Lector';
+    inlineVideoFrame.src = src;
+    document.body.classList.add('inline-video-open');
+    document.querySelector('.scroll').scrollTop = 0;
+    if(window.matchMedia('(max-width:900px)').matches){
+      document.body.classList.add('sidebar-collapsed');
+    }
+    inlineVideoFrame.play().catch(()=>{});
+  }
+  function closeInlineMedia(){
+    document.body.classList.remove('inline-pdf-open','inline-video-open');
+    inlinePdfFrame.src = 'about:blank';
+    inlineVideoFrame.pause();
+    inlineVideoFrame.removeAttribute('src');
+    inlineVideoFrame.load();
+  }
   function openVideoReader(src){
+    closeInlineMedia();
     resetReader();
     videoFrame.src = src;
     document.body.classList.add('reader-open','video-reader');
@@ -710,20 +788,20 @@
     }, 1400);
   }
   document.querySelectorAll('[data-open-pdf]').forEach(item=>{
-    item.addEventListener('click',()=>openPdfReader(item.dataset.openPdf));
+    item.addEventListener('click',()=>openInlinePdf(item.dataset.openPdf,item.querySelector('.cc-name')?.textContent.trim()));
     item.addEventListener('keydown',e=>{
       if(e.key === 'Enter' || e.key === ' '){
         e.preventDefault();
-        openPdfReader(item.dataset.openPdf);
+        openInlinePdf(item.dataset.openPdf,item.querySelector('.cc-name')?.textContent.trim());
       }
     });
   });
   document.querySelectorAll('[data-open-video]').forEach(item=>{
-    item.addEventListener('click',()=>openVideoReader(item.dataset.openVideo));
+    item.addEventListener('click',()=>openInlineVideo(item.dataset.openVideo,item.querySelector('.cc-name')?.textContent.trim()));
     item.addEventListener('keydown',e=>{
       if(e.key === 'Enter' || e.key === ' '){
         e.preventDefault();
-        openVideoReader(item.dataset.openVideo);
+        openInlineVideo(item.dataset.openVideo,item.querySelector('.cc-name')?.textContent.trim());
       }
     });
   });
@@ -731,7 +809,7 @@
   certificateClose.addEventListener('click', closeCertificateModal);
 
   // ── chart data ──
-  const CONTENT_VALUES = [100,100,90,100,80,100,100,100,0,0,25,0,0,0,0,0,0,0,0,0,0,0,0,0];
+  const CONTENT_VALUES = [100,100,0,0,0,20,100,100,100,100,0,0];
   const SCROLL_AFTER = 10;   // > 10 conteúdos => scroll horizontal
   const COL_WIDTH = 84;      // px por coluna quando há scroll
 
