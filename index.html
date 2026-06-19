@@ -430,7 +430,7 @@
 
     <div class="conteudos">
       <div class="conteudos-lista">
-          <div class="conteudo" data-open-pdf="uploads/manual-minha-area.pdf" role="button" tabindex="0">
+          <div class="conteudo active" data-open-pdf="uploads/manual-minha-area.pdf" role="button" tabindex="0">
             <div class="ctico" style="background:var(--teal-light)"><i class="ui-icon icon-pdf ui-teal" aria-hidden="true"></i></div>
             <div class="cc-mid">
               <div class="cc-try">Tentativa 1/2</div>
@@ -443,7 +443,7 @@
               <div class="cc-meta-row"><div class="cc-status approved">Aprovado</div></div>
             </div>
           </div>
-          <div class="conteudo active" data-open-video="uploads/linguagens-programacao.mp4" role="button" tabindex="0">
+          <div class="conteudo" data-open-video="uploads/linguagens-programacao.mp4" role="button" tabindex="0">
             <div class="ctico" style="background:var(--orange-subtle)"><i class="ui-icon icon-play-media ui-orange" aria-hidden="true"></i></div>
             <div class="cc-mid">
               <div class="cc-try">Tentativa 2/3</div>
@@ -873,6 +873,7 @@
   let saved='desempenho';
   try{ saved = localStorage.getItem('lector-trilhaA-tab') || 'desempenho'; }catch(e){}
   activate(saved);
+  openInlinePdf('uploads/manual-minha-area.pdf','Boas-vindas ao Suporte Lector');
 </script>
 </body>
 </html>
