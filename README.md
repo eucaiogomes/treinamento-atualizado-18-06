@@ -1,3 +1,3 @@
-# tela-visualiza-o-trilha
+# treinamento-atualizado-18-06
 
-Tela estática de visualização de trilha com sidebar, conteúdos, leitor de PDF e player de vídeo.
+Tela estática de treinamento com sidebar, conteúdos, leitor de PDF e player de vídeo.
